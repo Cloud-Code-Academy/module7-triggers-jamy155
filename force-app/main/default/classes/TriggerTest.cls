@@ -335,7 +335,7 @@ public with sharing class TriggerTest {
             delete opportunitiesToInsert;
             System.assert(false, 'Expected an exception but did not get one.');
         } catch (DmlException e) {
-            System.assert(e.getMessage().contains('Cannot delete closed opportunity for a banking account that is won'), 'The error message is not as expected.');
+            System.assert(e.getMessage().contains('Cannot delete closed opportunity for a banking account that is won'), 'The error message is not as expected.' + e.getMessage());
         }
         Test.stopTest();
     }
@@ -343,7 +343,9 @@ public with sharing class TriggerTest {
     /*
     * Question 7
     * Opportunity Trigger
-    * When an opportunity is updated set the primary contact on the opportunity to the contact on the same account with the title of 'CEO'.
+    * When an opportunity is updated 
+    set the primary contact on the opportunity 
+    to the contact on the same account with the title of 'CEO'. 
     * Trigger should only fire on update.
     */
     @IsTest
